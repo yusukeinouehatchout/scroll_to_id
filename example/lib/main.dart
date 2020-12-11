@@ -15,6 +15,8 @@ class _MyAppState extends State<MyApp> {
 
   final ScrollToId scrollToId = ScrollToId();
 
+  List<Color> _colorList = [Colors.green, Colors.red, Colors.yellow, Colors.blue];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,36 +33,18 @@ class _MyAppState extends State<MyApp> {
           children: [
             InteractiveScrollViewer(
               scrollToId: scrollToId,
-              children: [
-                ScrollContent(
-                  id: '1',
+              children: List.generate(10, (index) {
+                return ScrollContent(
+                  id: '$index',
                   child: Container(
-                    height: 600,
-                    color: Colors.green,
+                    alignment: Alignment.center,
+                    width: double.infinity,
+                    height: 200,
+                    child: Text('$index', style: TextStyle(color: Colors.white, fontSize: 50),),
+                    color: _colorList[index % _colorList.length],
                   ),
-                ),
-                ScrollContent(
-                  id: '2',
-                  child: Container(
-                    height: 800,
-                    color: Colors.red,
-                  ),
-                ),
-                ScrollContent(
-                  id: '3',
-                  child: Container(
-                    height: 300,
-                    color: Colors.yellow,
-                  ),
-                ),
-                ScrollContent(
-                  id: '4',
-                  child: Container(
-                    height: 700,
-                    color: Colors.blue,
-                  ),
-                ),
-              ],
+                );
+              }),
             ),
             Container(
               decoration: BoxDecoration(
@@ -68,56 +52,20 @@ class _MyAppState extends State<MyApp> {
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [
-                  GestureDetector(
+                children: List.generate(10, (index) {
+                  return GestureDetector(
                     child: Container(
                       width: 100,
                       alignment: Alignment.center,
                       height: 50,
-                      child: Text('1', style: TextStyle(color: Colors.white),),
-                      color: Colors.green,
+                      child: Text('$index', style: TextStyle(color: Colors.white),),
+                      color: _colorList[index % _colorList.length],
                     ),
                     onTap: () {
-                      scrollToId.scroll(id: '1');
+                      scrollToId.scroll(id: '$index');
                     },
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      width: 100,
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text('2', style: TextStyle(color: Colors.white),),
-                      color: Colors.red,
-                    ),
-                    onTap: () {
-                      scrollToId.scroll(id: '2');
-                    },
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      width: 100,
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text('3', style: TextStyle(color: Colors.white),),
-                      color: Colors.yellow,
-                    ),
-                    onTap: () {
-                      scrollToId.scroll(id: '3');
-                    },
-                  ),
-                  GestureDetector(
-                    child: Container(
-                      width: 100,
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text('4', style: TextStyle(color: Colors.white),),
-                      color: Colors.blue,
-                    ),
-                    onTap: () {
-                      scrollToId.scroll(id: '4');
-                    },
-                  ),
-                ],
+                  );
+                }),
               ),
             )
           ],
