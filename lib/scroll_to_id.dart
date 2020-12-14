@@ -1,6 +1,6 @@
-/// Scroll To Id
-/// Hatchout School (IYU Inc.)
-/// https://hatchout.net/
+/// scroll_to_id
+/// Yusuke Inoue (IYU Inc.)
+/// Hatchout School
 
 export 'src/scroll_to_id.dart';
 export 'src/scroll_content.dart';
