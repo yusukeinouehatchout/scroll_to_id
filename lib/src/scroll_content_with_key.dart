@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scroll_to_id/scroll_to_id.dart';
 
+/// ScrollContentWithKey is to set new GlobalKey.
 class ScrollContentWithKey {
 
   final Widget child;

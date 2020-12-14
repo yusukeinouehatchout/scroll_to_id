@@ -6,6 +6,8 @@ class ScrollToId {
   ScrollController scrollController = ScrollController();
   List<ScrollContentWithKey> scrollContentsList = [];
 
+  /// This function is to scroll to the widget that holds id.
+  /// id is a required parameter that defines a default position to scroll.
   void scroll({String id}) {
 
     /// Scroll Target Height
@@ -15,12 +17,12 @@ class ScrollToId {
       if(scrollContents.id == id) {
         try {
           if(sumHeight < scrollController.position.maxScrollExtent) {
-            /// Scroll to ID position
+            /// Scroll to id position
             scrollController.animateTo(sumHeight, duration: Duration(milliseconds: 500), curve: Curves.ease);
             break;
 
           } else {
-            /// When Scrollable range is exceeded, Scroll to MaxScrollExtent
+            /// Case Scrollable range is exceeded, Scroll to MaxScrollExtent
             scrollController.animateTo(scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 500), curve: Curves.ease);
             break;
 
@@ -33,7 +35,7 @@ class ScrollToId {
 
       } else {
         try {
-          /// update Scroll target
+          /// update Scroll target height
           sumHeight += scrollContents.key.currentContext.size.height;
 
         } catch(e) {
