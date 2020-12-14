@@ -12,10 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final ScrollToId scrollToId = ScrollToId();
 
-  List<Color> _colorList = [Colors.green, Colors.red, Colors.yellow, Colors.blue];
+  List<Color> _colorList = [
+    Colors.green,
+    Colors.red,
+    Colors.yellow,
+    Colors.blue
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +44,10 @@ class _MyAppState extends State<MyApp> {
                     alignment: Alignment.center,
                     width: double.infinity,
                     height: 200,
-                    child: Text('$index', style: TextStyle(color: Colors.white, fontSize: 50),),
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 50),
+                    ),
                     color: _colorList[index % _colorList.length],
                   ),
                 );
@@ -58,7 +65,10 @@ class _MyAppState extends State<MyApp> {
                       width: 100,
                       alignment: Alignment.center,
                       height: 50,
-                      child: Text('$index', style: TextStyle(color: Colors.white),),
+                      child: Text(
+                        '$index',
+                        style: TextStyle(color: Colors.white),
+                      ),
                       color: _colorList[index % _colorList.length],
                     ),
                     onTap: () {
@@ -73,5 +83,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-
 }

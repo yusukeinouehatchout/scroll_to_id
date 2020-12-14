@@ -3,7 +3,6 @@ import 'package:scroll_to_id/scroll_to_id.dart';
 
 /// ScrollContentWithKey is to set new GlobalKey.
 class ScrollContentWithKey {
-
   final Widget child;
   final String id;
   final GlobalKey key;
@@ -12,10 +11,6 @@ class ScrollContentWithKey {
 
   factory ScrollContentWithKey.fromWithout(ScrollContent scrollContent) {
     return ScrollContentWithKey(
-        child: scrollContent.child,
-        id: scrollContent.id,
-        key: GlobalKey()
-    );
+        child: scrollContent.child, id: scrollContent.id, key: GlobalKey());
   }
-
 }
