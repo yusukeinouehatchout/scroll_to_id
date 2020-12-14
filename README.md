@@ -13,7 +13,7 @@ You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.0.2
+  scroll_to_id: ^1.0.3
 ```
 
 ## Getting Started
