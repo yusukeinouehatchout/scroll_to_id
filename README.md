@@ -2,6 +2,8 @@
 
 scroll_to_id is a Flutter library for Scroll to id in ScrollView
 
+![Image](https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_test.gif)
+
 ## Features
 
 * Select scroll direction
@@ -13,7 +15,7 @@ You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.0.3
+  scroll_to_id: ^1.0.5
 ```
 
 ## Getting Started
