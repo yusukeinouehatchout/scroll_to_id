@@ -6,8 +6,8 @@ import 'package:scroll_to_id/src/scroll_content_with_key.dart';
 /// This widget is customized version of 'SingleChildScrollView'.
 /// children and scrollToId is required parameter.
 class InteractiveScrollViewer extends StatefulWidget {
-  final List<ScrollContent> children;
   final ScrollToId scrollToId;
+  final List<ScrollContent> children;
 
   InteractiveScrollViewer({@required this.children, @required this.scrollToId});
 
@@ -34,6 +34,7 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
       controller: widget.scrollToId.scrollController,
       child: Column(
         children: widget.scrollToId.scrollContentsList.map((scrollContents) {
+          /// This widget is to get the size of its widget.
           return RepaintBoundary(
             key: scrollContents.key,
             child: scrollContents.child,

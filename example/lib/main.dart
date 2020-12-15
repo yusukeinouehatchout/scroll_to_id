@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:scroll_to_id/scroll_to_id.dart';
 
 void main() {
@@ -21,16 +20,17 @@ class _MyAppState extends State<MyApp> {
     Colors.blue
   ];
 
+  /// Generate 10 Container
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Scroll to ID',
+      title: 'Scroll to id',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Scroll to ID'),
+          title: const Text('Scroll to id'),
         ),
         body: Stack(
           alignment: Alignment.topRight,
@@ -72,7 +72,13 @@ class _MyAppState extends State<MyApp> {
                       color: _colorList[index % _colorList.length],
                     ),
                     onTap: () {
-                      scrollToId.scroll(id: '$index');
+                      /// scroll with animation
+                      scrollToId.animateTo('$index',
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease);
+
+                      /// scroll with jump
+                      // scrollToId.jumpTo('$index');
                     },
                   );
                 }),
