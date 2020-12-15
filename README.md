@@ -7,7 +7,6 @@ scroll_to_id is a Flutter library for Scroll to id in ScrollView
 ## Features
 
 * Select scroll direction
-* Select jump or animation
 
 ## Installing
 
@@ -15,7 +14,7 @@ You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.0.5
+  scroll_to_id: ^1.1.0
 ```
 
 ## Getting Started
@@ -62,14 +61,21 @@ id property is destination of scroll.
 Next, to scroll to id:
 
 ```dart
-scrollToId.scroll(id: 'b');
+/// animate
+scrollToId.animateTo(
+  'b',
+  duration: Duration(milliseconds: 500),
+  curve: Curves.ease
+);
+
+/// jump
+scrollToId.jumpTo('b');
 ```
 
 ## Examples
 
 ```dart
 import 'package:flutter/material.dart';
-
 import 'package:scroll_to_id/scroll_to_id.dart';
 
 void main() {
@@ -82,21 +88,26 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   final ScrollToId scrollToId = ScrollToId();
 
-  List<Color> _colorList = [Colors.green, Colors.red, Colors.yellow, Colors.blue];
+  List<Color> _colorList = [
+    Colors.green,
+    Colors.red,
+    Colors.yellow,
+    Colors.blue
+  ];
 
+  /// Generate 10 Container
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Scroll to ID',
+      title: 'Scroll to id',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Scroll to ID'),
+          title: const Text('Scroll to id'),
         ),
         body: Stack(
           alignment: Alignment.topRight,
@@ -110,7 +121,10 @@ class _MyAppState extends State<MyApp> {
                     alignment: Alignment.center,
                     width: double.infinity,
                     height: 200,
-                    child: Text('$index', style: TextStyle(color: Colors.white, fontSize: 50),),
+                    child: Text(
+                      '$index',
+                      style: TextStyle(color: Colors.white, fontSize: 50),
+                    ),
                     color: _colorList[index % _colorList.length],
                   ),
                 );
@@ -128,11 +142,20 @@ class _MyAppState extends State<MyApp> {
                       width: 100,
                       alignment: Alignment.center,
                       height: 50,
-                      child: Text('$index', style: TextStyle(color: Colors.white),),
+                      child: Text(
+                        '$index',
+                        style: TextStyle(color: Colors.white),
+                      ),
                       color: _colorList[index % _colorList.length],
                     ),
                     onTap: () {
-                      scrollToId.scroll(id: '$index');
+                      /// scroll with animation
+                      scrollToId.animateTo('$index',
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease);
+
+                      /// scroll with jump
+                      // scrollToId.jumpTp('$index');
                     },
                   );
                 }),
@@ -143,7 +166,6 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-
 }
 ```
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 /// ScrollContent is widget for you to get the height of its widget.
-/// child is required.
+/// id and child is required parameter.
 class ScrollContent {
-  final Widget child;
+  /// Name the id to get scroll position.
   final String id;
 
-  ScrollContent({@required this.child, this.id});
+  /// scroll position is the top of child.
+  final Widget child;
+
+  ScrollContent({@required this.id, @required this.child});
 }
