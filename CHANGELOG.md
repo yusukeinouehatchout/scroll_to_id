@@ -1,3 +1,6 @@
+# 1.2.0
+- Select scroll direction
+
 # 1.1.0
 - Select jump or animate
 
