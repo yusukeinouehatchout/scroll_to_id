@@ -17,7 +17,7 @@ class ScrollToId {
   }
 
   /// This function is to jump.
-  /// The first argument is id(String), not height(double).
+  /// The first argument is id(String), not size(double).
   Future<void> jumpTo(String id) async {
     Function _function = (double offset) {
       scrollController.jumpTo(offset);
@@ -28,7 +28,7 @@ class ScrollToId {
   /// This function is to scroll to the widget that holds id.
   /// id is a required parameter that defines a default position to scroll.
   void _scroll({String id, Function scrollFunction}) {
-    /// Scroll Target Height
+    /// Scroll target size
     double sumSize = 0;
 
     for (ScrollContentWithKey scrollContents in scrollContentsList) {

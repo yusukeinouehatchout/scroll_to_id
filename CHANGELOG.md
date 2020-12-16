@@ -1,3 +1,6 @@
+# 1.2.1
+- Update README
+
 # 1.2.0
 - Select scroll direction
 

@@ -5,17 +5,13 @@ scroll_to_id is a Flutter library for Scroll to id in ScrollView
 | ![Image](https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_vertical.gif) | ![Image](https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_horizontal.gif)
 | :------------: | :------------: |
 
-## Features
-
-* slide show
-
 ## Installing
 
 You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.2.0
+  scroll_to_id: ^1.2.1
 ```
 
 ## Getting Started
