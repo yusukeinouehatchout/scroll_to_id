@@ -41,6 +41,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   /// [Axis.vertical]
+  /// https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_vertical.gif
   Widget buildStackVertical() {
     return Stack(
       alignment: Alignment.topRight,
@@ -99,6 +100,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   /// [Axis.horizontal]
+  /// https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_horizontal.gif
   Widget buildStackHorizontal() {
     return Column(
       children: [
