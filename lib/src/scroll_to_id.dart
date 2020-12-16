@@ -4,6 +4,7 @@ import 'package:scroll_to_id/src/scroll_content_with_key.dart';
 class ScrollToId {
   ScrollController scrollController = ScrollController();
   List<ScrollContentWithKey> scrollContentsList = [];
+  Axis scrollDirection;
 
   /// This function is to scroll with animation.
   /// The first argument is id(String), not height(double).
@@ -28,17 +29,17 @@ class ScrollToId {
   /// id is a required parameter that defines a default position to scroll.
   void _scroll({String id, Function scrollFunction}) {
     /// Scroll Target Height
-    double sumHeight = 0;
+    double sumSize = 0;
 
     for (ScrollContentWithKey scrollContents in scrollContentsList) {
       if (scrollContents.id == id) {
         try {
-          if (sumHeight < scrollController.position.maxScrollExtent) {
+          if (sumSize < scrollController.position.maxScrollExtent) {
             /// Scroll to id position
-            scrollFunction(sumHeight);
+            scrollFunction(sumSize);
             break;
           } else {
-            /// Case Scrollable range is exceeded, Scroll to MaxScrollExtent
+            /// Case scrollable range is exceeded, scroll to MaxScrollExtent
             scrollFunction(scrollController.position.maxScrollExtent);
             break;
           }
@@ -48,8 +49,13 @@ class ScrollToId {
         }
       } else {
         try {
-          /// update Scroll target height
-          sumHeight += scrollContents.key.currentContext.size.height;
+          /// Update Scroll target size
+          if (scrollDirection == Axis.vertical) {
+            /// Default
+            sumSize += scrollContents.key.currentContext.size.height;
+          } else {
+            sumSize += scrollContents.key.currentContext.size.width;
+          }
         } catch (e) {
           print('$e');
         }
