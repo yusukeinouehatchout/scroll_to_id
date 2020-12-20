@@ -2,9 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:scroll_to_id/src/scroll_content_with_key.dart';
 
 class ScrollToId {
-  ScrollController scrollController = ScrollController();
+  final ScrollController scrollController;
   List<ScrollContentWithKey> scrollContentsList = [];
   Axis scrollDirection;
+
+  ScrollToId({this.scrollController});
+
+  /// Get id by scroll position
+  String idPosition() {
+    double sumSize = 0;
+    for (ScrollContentWithKey scrollContents in scrollContentsList) {
+      /// Update Scroll target size
+      if (scrollDirection == Axis.vertical) {
+        /// Default
+        sumSize += scrollContents.key.currentContext.size.height;
+      } else {
+        sumSize += scrollContents.key.currentContext.size.width;
+      }
+
+      if (scrollController.offset < sumSize) {
+        return scrollContents.id;
+      }
+    }
+    return null;
+  }
 
   /// This function is to scroll with animation.
   /// The first argument is id(String), not height(double).

@@ -1,3 +1,7 @@
+# 1.3.0
+- Get id by scroll position
+- To set ScrollController
+
 # 1.2.1
 - Update README
 
