@@ -11,7 +11,7 @@ You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.2.1
+  scroll_to_id: ^1.3.0
 ```
 
 ## Getting Started
@@ -85,8 +85,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  /// Create ScrollToId instance
-  final ScrollToId scrollToId = ScrollToId();
+  ScrollToId scrollToId;
+  final ScrollController scrollController = ScrollController();
 
   List<Color> _colorList = [
     Colors.green,
@@ -94,6 +94,20 @@ class _MyAppState extends State<MyApp> {
     Colors.yellow,
     Colors.blue
   ];
+
+  void _scrollListener() {
+    print(scrollToId.idPosition());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// Create ScrollToId instance
+    scrollToId = ScrollToId(scrollController: scrollController);
+
+    scrollController.addListener(_scrollListener);
+  }
 
   /// Generate 10 Container
   /// Case [Axis.horizontal] set buildStackHorizontal() to body
@@ -115,6 +129,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   /// [Axis.vertical]
+  /// https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_vertical.gif
   Widget buildStackVertical() {
     return Stack(
       alignment: Alignment.topRight,
@@ -173,6 +188,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   /// [Axis.horizontal]
+  /// https://raw.githubusercontent.com/wiki/yusukeinouehatchout/scroll_to_id/gif/scroll_to_id_horizontal.gif
   Widget buildStackHorizontal() {
     return Column(
       children: [

@@ -11,8 +11,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  /// Create ScrollToId instance
-  final ScrollToId scrollToId = ScrollToId();
+  ScrollToId scrollToId;
+  final ScrollController scrollController = ScrollController();
 
   List<Color> _colorList = [
     Colors.green,
@@ -20,6 +20,20 @@ class _MyAppState extends State<MyApp> {
     Colors.yellow,
     Colors.blue
   ];
+
+  void _scrollListener() {
+    print(scrollToId.idPosition());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    /// Create ScrollToId instance
+    scrollToId = ScrollToId(scrollController: scrollController);
+
+    scrollController.addListener(_scrollListener);
+  }
 
   /// Generate 10 Container
   /// Case [Axis.horizontal] set buildStackHorizontal() to body
