@@ -1,3 +1,7 @@
+# 1.4.0
+- To scroll to next
+- To scroll to before
+
 # 1.3.1
 - Cannot use the same id
 
