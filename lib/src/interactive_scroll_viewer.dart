@@ -24,6 +24,8 @@ class InteractiveScrollViewer extends StatefulWidget {
 }
 
 class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
+  List<String> _idList = [];
+
   @override
   void initState() {
     super.initState();
@@ -33,6 +35,11 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
 
     /// Convert ScrollContent to ScrollContentWithKey
     for (ScrollContent scrollContents in widget.children) {
+      if (_idList.contains(scrollContents.id)) {
+        throw Exception('Do not use the same id');
+      } else {
+        _idList.add(scrollContents.id);
+      }
       widget.scrollToId.scrollContentsList
           .add(ScrollContentWithKey.fromWithout(scrollContents));
     }
