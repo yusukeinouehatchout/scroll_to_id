@@ -46,6 +46,65 @@ class ScrollToId {
     _scroll(id: id, scrollFunction: _function);
   }
 
+  /// This function is to scroll to next id with animation.
+  Future<void> animateToNext(
+      {@required Duration duration, @required Curve curve}) async {
+    Function _function = (double offset) {
+      scrollController.animateTo(offset, duration: duration, curve: curve);
+    };
+    _scroll(id: _getNextId(number: 1), scrollFunction: _function);
+  }
+
+  /// This function is to jump to next id.
+  Future<void> jumpToNext() async {
+    Function _function = (double offset) {
+      scrollController.jumpTo(offset);
+    };
+    _scroll(id: _getNextId(number: 1), scrollFunction: _function);
+  }
+
+  /// This function is to scroll to before id with animation.
+  Future<void> animateToBefore(
+      {@required Duration duration, @required Curve curve}) async {
+    Function _function = (double offset) {
+      scrollController.animateTo(offset, duration: duration, curve: curve);
+    };
+    _scroll(id: _getNextId(number: -1), scrollFunction: _function);
+  }
+
+  /// This function is to jump to before id.
+  Future<void> jumpToBefore() async {
+    Function _function = (double offset) {
+      scrollController.jumpTo(offset);
+    };
+    _scroll(id: _getNextId(number: -1), scrollFunction: _function);
+  }
+
+  /// get next id by position
+  /// i is next, -1 is before
+  String _getNextId({int number}) {
+    double sumSize = 0;
+    for (int i = 0; i < scrollContentsList.length; i++) {
+      /// Update Scroll target size
+      if (scrollDirection == Axis.vertical) {
+        /// Default
+        sumSize += scrollContentsList[i].key.currentContext.size.height;
+      } else {
+        sumSize += scrollContentsList[i].key.currentContext.size.width;
+      }
+
+      if (scrollController.offset < sumSize) {
+        /// return null.
+        if (number == 1 && i == scrollContentsList.length - 1) return null;
+        if (number == -1 && i == 0) return null;
+
+        /// return id
+        return scrollContentsList[i + number].id;
+      }
+    }
+    return null;
+  }
+
   /// This function is to scroll to the widget that holds id.
   /// id is a required parameter that defines a default position to scroll.
   void _scroll({String id, Function scrollFunction}) {

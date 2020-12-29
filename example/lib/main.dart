@@ -50,6 +50,13 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Scroll to id'),
         ),
         body: buildStackVertical(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.navigate_next),
+          onPressed: () {
+            scrollToId.animateToNext(
+                duration: Duration(milliseconds: 500), curve: Curves.ease);
+          },
+        ),
       ),
     );
   }
