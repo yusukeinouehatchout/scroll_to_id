@@ -1,3 +1,6 @@
+# 1.3.1
+- Cannot use the same id
+
 # 1.3.0
 - Get id by scroll position
 - To set ScrollController

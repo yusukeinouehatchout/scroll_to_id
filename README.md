@@ -11,7 +11,7 @@ You should add the following to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  scroll_to_id: ^1.3.0
+  scroll_to_id: ^1.3.1
 ```
 
 ## Getting Started
@@ -22,9 +22,14 @@ To start, import the dependency in your code:
 import 'package:scroll_to_id/scroll_to_id.dart';
 ```
 
-Next, to create instance:
+Next, to define ScrollController:
 ```dart
-final ScrollToId scrollToId = ScrollToId();
+final scrollController = ScrollController();
+```
+
+Next, to create instance with ScrollController:
+```dart
+ScrollToId scrollToId = ScrollToId(scrollController: scrollController);
 ```
 
 Next, to set InteractiveScrollViewer and ScrollContent:
@@ -54,6 +59,7 @@ InteractiveScrollViewer(
 ```
 
 id property is destination of scroll.
+Do not use the same id.
 
 Next, to scroll to id:
 
