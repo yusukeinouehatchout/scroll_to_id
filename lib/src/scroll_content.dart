@@ -9,5 +9,5 @@ class ScrollContent {
   /// scroll position is the top of child.
   final Widget child;
 
-  ScrollContent({@required this.id, @required this.child});
+  ScrollContent({required this.id, required this.child});
 }

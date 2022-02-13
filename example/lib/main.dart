@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ScrollToId scrollToId;
+  ScrollToId? scrollToId;
   final ScrollController scrollController = ScrollController();
 
   List<Color> _colorList = [
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _scrollListener() {
-    print(scrollToId.idPosition());
+    print(scrollToId!.idPosition());
   }
 
   @override
@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.navigate_next),
           onPressed: () {
-            scrollToId.animateToNext(
+            scrollToId!.animateToNext(
                 duration: Duration(milliseconds: 500), curve: Curves.ease);
           },
         ),
@@ -105,7 +105,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 onTap: () {
                   /// scroll with animation
-                  scrollToId.animateTo('$index',
+                  scrollToId!.animateTo('$index',
                       duration: Duration(milliseconds: 500),
                       curve: Curves.ease);
 
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   onTap: () {
                     /// scroll with animation
-                    scrollToId.animateTo('$index',
+                    scrollToId!.animateTo('$index',
                         duration: Duration(milliseconds: 500),
                         curve: Curves.ease);
 

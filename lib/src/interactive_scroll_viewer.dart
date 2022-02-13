@@ -6,7 +6,7 @@ import 'package:scroll_to_id/src/scroll_content_with_key.dart';
 /// This widget is customized version of 'SingleChildScrollView'.
 /// children and scrollToId is required parameter.
 class InteractiveScrollViewer extends StatefulWidget {
-  final ScrollToId scrollToId;
+  final ScrollToId? scrollToId;
   final List<ScrollContent> children;
 
   /// The axis along which the scroll view scrolls.
@@ -14,8 +14,8 @@ class InteractiveScrollViewer extends StatefulWidget {
   final Axis scrollDirection;
 
   InteractiveScrollViewer(
-      {@required this.children,
-      @required this.scrollToId,
+      {required this.children,
+      required this.scrollToId,
       this.scrollDirection = Axis.vertical});
 
   @override
@@ -31,7 +31,7 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
     super.initState();
 
     /// Set scrollDirection
-    widget.scrollToId.scrollDirection = widget.scrollDirection;
+    widget.scrollToId!.scrollDirection = widget.scrollDirection;
 
     /// Convert ScrollContent to ScrollContentWithKey
     for (ScrollContent scrollContents in widget.children) {
@@ -40,7 +40,7 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
       } else {
         _idList.add(scrollContents.id);
       }
-      widget.scrollToId.scrollContentsList
+      widget.scrollToId!.scrollContentsList
           .add(ScrollContentWithKey.fromWithout(scrollContents));
     }
   }
@@ -49,7 +49,7 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: widget.scrollDirection,
-      controller: widget.scrollToId.scrollController,
+      controller: widget.scrollToId!.scrollController,
       child: buildContent(),
     );
   }
@@ -58,13 +58,13 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
     /// Default
     if (widget.scrollDirection == Axis.vertical) {
       return Column(
-        children: widget.scrollToId.scrollContentsList.map((scrollContents) {
+        children: widget.scrollToId!.scrollContentsList.map((scrollContents) {
           return buildRepaintBoundary(scrollContents);
         }).toList(),
       );
     } else {
       return Row(
-        children: widget.scrollToId.scrollContentsList.map((scrollContents) {
+        children: widget.scrollToId!.scrollContentsList.map((scrollContents) {
           return buildRepaintBoundary(scrollContents);
         }).toList(),
       );
