@@ -1,3 +1,6 @@
+# 1.5.1
+- Support null safety
+
 # 1.4.0
 - To scroll to next
 - To scroll to before
