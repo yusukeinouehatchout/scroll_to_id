@@ -41,7 +41,7 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
         _idList.add(scrollContents.id);
       }
 
-      // Check if scrollContentList already contains this scrollContent to prevent duplicated widgets.
+      // Check if scrollContentList already contains this scrollContent or not to prevent duplicated widgets.
       if (!widget.scrollToId!.scrollContentsList
           .any((x) => x.id == scrollContents.id)) {
         widget.scrollToId!.scrollContentsList
