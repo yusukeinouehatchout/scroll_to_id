@@ -40,8 +40,13 @@ class _InteractiveScrollViewerState extends State<InteractiveScrollViewer> {
       } else {
         _idList.add(scrollContents.id);
       }
-      widget.scrollToId!.scrollContentsList
-          .add(ScrollContentWithKey.fromWithout(scrollContents));
+
+      // Check if scrollContentList already contains this scrollContent to prevent duplicated widgets.
+      if (!widget.scrollToId!.scrollContentsList
+          .any((x) => x.id == scrollContents.id)) {
+        widget.scrollToId!.scrollContentsList
+            .add(ScrollContentWithKey.fromWithout(scrollContents));
+      }
     }
   }
 
